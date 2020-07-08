@@ -1,5 +1,6 @@
-package me.katsumag.katbot.services
+package me.katsumag.katbot.components
 
+import com.sedmelluq.discord.lavaplayer.jdaudp.NativeAudioSendFactory
 import me.katsumag.katbot.getLogger
 import dev.bombardy.octo.command.CommandManager
 import me.katsumag.katbot.config.BotConfig
@@ -9,7 +10,7 @@ import net.dv8tion.jda.api.entities.Activity
 import net.dv8tion.jda.api.requests.GatewayIntent
 import net.dv8tion.jda.api.utils.cache.CacheFlag
 import org.springframework.context.annotation.Bean
-import org.springframework.stereotype.Service
+import org.springframework.stereotype.Component
 import kotlin.system.exitProcess
 
 /**
@@ -20,13 +21,14 @@ import kotlin.system.exitProcess
  * @author Callum Seabrook
  * @since 1.0
  */
-@Service
-class JDAService {
+@Component
+class JDAComponent {
 
     @Bean
     fun jda(config: BotConfig) = runCatching {
         JDABuilder.create(config.token, GatewayIntent.getIntents(GatewayIntent.ALL_INTENTS))
                     .setActivity(Activity.playing("katsumag.me"))
+                    .setAudioSendFactory(NativeAudioSendFactory())
                     .disableCache(DISABLED_FLAGS)
                     .build()
     }.getOrElse {
@@ -49,6 +51,6 @@ class JDAService {
                 "commandNotFound" to "Sorry, I couldn't find the command you were looking for."
         )
 
-        private val LOGGER = getLogger<JDAService>()
+        private val LOGGER = getLogger<JDAComponent>()
     }
 }

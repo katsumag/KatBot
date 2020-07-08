@@ -59,7 +59,10 @@ dependencies {
     implementation("org.apache.logging.log4j:log4j-api:2.13.3")
     implementation("org.apache.logging.log4j:log4j-core:2.13.3")
     implementation ("dev.bombardy:octo:1.0.1")
+    implementation("com.sedmelluq:jda-nas:1.1.0")
     implementation("com.sedmelluq:lavaplayer:1.3.50")
+    implementation("me.duncte123:botCommons:1.0.73")
+    implementation("org.menudocs:paste-client-java:1.0.16")
 }
 
 dependencyManagement {

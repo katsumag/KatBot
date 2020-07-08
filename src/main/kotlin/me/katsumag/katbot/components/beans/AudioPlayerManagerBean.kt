@@ -1,4 +1,4 @@
-package me.katsumag.katbot.components
+package me.katsumag.katbot.components.beans
 
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager
 import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager

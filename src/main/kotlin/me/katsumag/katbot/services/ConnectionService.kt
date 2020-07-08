@@ -21,7 +21,6 @@ import org.springframework.stereotype.Service
 @Service
 class ConnectionService @Autowired constructor(
         private val jda: JDA,
-        private val cacheService: RedisCacheService,
         private val beanFactory: BeanFactory
 ) {
 
@@ -30,10 +29,7 @@ class ConnectionService @Autowired constructor(
      * already in a channel, does nothing.
      */
     fun join(channel: VoiceChannel) = runCatching {
-        val guildId = channel.guild.idLong
-        requireNotNull(jda.getGuildById(guildId)).audioManager.openAudioConnection(channel)
-
-        cacheService.putVoiceChannel(guildId, channel.idLong)
+        channel.guild.audioManager.openAudioConnection(channel)
         LOGGER.debug("Successfully connected to voice channel $channel in guild ${channel.guild}")
 
         Result.SUCCESSFUL
@@ -49,7 +45,7 @@ class ConnectionService @Autowired constructor(
      *
      * @param clearQueue if the queue should be cleared when the bot leaves the channel
      */
-    fun leave(guildId: Long, clearQueue: Boolean) {
+    fun leave(guildId: String, clearQueue: Boolean) {
         val musicManager = beanFactory.getBean<MusicManager>()
         if (clearQueue) {
             musicManager.scheduler.clearQueue()
@@ -57,14 +53,13 @@ class ConnectionService @Autowired constructor(
         }
 
         requireNotNull(jda.getGuildById(guildId)).audioManager.closeAudioConnection()
-        cacheService.removeVoiceChannel(guildId)
+
         LOGGER.debug("Successfully disconnected from voice channel")
     }
 
-    fun reconnect(guildId: Long) {
+    fun reconnect(guildId: String) {
         val guild = requireNotNull(jda.getGuildById(guildId))
-        val channelId = cacheService.getVoiceChannel(guildId)
-        val voiceChannel = channelId?.let { guild.getVoiceChannelById(it) }
+        val voiceChannel = guild.selfMember.voiceState?.channel
 
         LOGGER.debug("Attempting to disconnect from voice channel $voiceChannel in guild with id $guildId")
         guild.audioManager.closeAudioConnection()

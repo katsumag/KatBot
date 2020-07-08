@@ -41,7 +41,7 @@ class TrackScheduler(private val player: AudioPlayer) : AudioEventAdapter() {
             return true
         }
 
-        return player.startTrack(queue.poll(), false)
+        return player.startTrack(next, false)
     }
 
     override fun onTrackEnd(player: AudioPlayer, track: AudioTrack, endReason: AudioTrackEndReason) {
@@ -53,7 +53,7 @@ class TrackScheduler(private val player: AudioPlayer) : AudioEventAdapter() {
             if (isLooping) {
                 LOGGER.debug("Loop is enabled. Attempting to start clone of previous track $track with player $player")
 
-                player.startTrack(queue.poll().makeClone(), false)
+                player.startTrack(track.makeClone(), false)
                 return
             }
 

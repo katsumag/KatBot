@@ -23,7 +23,6 @@ class PlayCommand(
     override val helpMessage = MessageBuilder().setEmbed(EmbedBuilder()
             .setDescription("""
                 **You got it wrong, here's how you use it:**
-
                 ${prefix}play [Link or query]
             """.trimIndent())
             .setColor(Color.RED)
@@ -35,7 +34,7 @@ class PlayCommand(
         val channel = message.textChannel
 
         if (arguments.isEmpty()) {
-            val audioPlayer = trackService.getMusicManager(channel.guild.idLong).player
+            val audioPlayer = trackService.getMusicManager(channel.guild.id).player
 
             if (audioPlayer.isPaused) {
                 LOGGER.info("Attempting to resume paused track ${audioPlayer.playingTrack}")

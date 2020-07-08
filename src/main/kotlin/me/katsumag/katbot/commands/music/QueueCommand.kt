@@ -17,7 +17,7 @@ class QueueCommand(private val trackService: TrackService) : Command(listOf("que
 
     @ExperimentalTime
     override suspend fun execute(message: Message, arguments: List<String>) {
-        val musicManager = trackService.getMusicManager(message.textChannel.guild.idLong)
+        val musicManager = trackService.getMusicManager(message.textChannel.guild.id)
 
         val member = message.member ?: return
         val channel = message.channel
@@ -37,9 +37,7 @@ class QueueCommand(private val trackService: TrackService) : Command(listOf("que
 
         if (pageNumber == 1) {
             embed.setDescription("""
-
             __What's playing now:__
-
             """.trimIndent())
 
             val nowPlaying = musicManager.player.playingTrack
@@ -57,7 +55,6 @@ class QueueCommand(private val trackService: TrackService) : Command(listOf("que
                 embed.appendDescription("""
                     [${nowPlaying.info.title}](${nowPlaying.info.uri}) | `${nowPlaying.duration.milliseconds.format()}`
                     *Requested by: ${requester.formatName()}*
-
                 """.trimIndent())
             }
 
@@ -95,7 +92,6 @@ class QueueCommand(private val trackService: TrackService) : Command(listOf("que
             }
 
             embed.appendDescription("""
-
                 **${queue.size} $plural ready to be played, ${queue.sumBy { it.duration }.milliseconds.format()} long**
             """.trimIndent())
         }
