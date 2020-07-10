@@ -34,7 +34,7 @@ class JDAComponent {
     }
 
     @Bean
-    fun commandManager(config: BotConfig, jda: JDA) = CommandManager(jda, "k!", COMMAND_MESSAGES)
+    fun commandManager(config: BotConfig, jda: JDA) = CommandManager(jda, config.prefix, COMMAND_MESSAGES)
 
     companion object {
 

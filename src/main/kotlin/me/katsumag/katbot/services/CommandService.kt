@@ -1,6 +1,8 @@
 package me.katsumag.katbot.services
 
 import dev.bombardy.octo.command.CommandManager
+import me.katsumag.katbot.commands.colour.HexCommand
+import me.katsumag.katbot.commands.colour.RGBCommand
 import me.katsumag.katbot.commands.moderation.BanCommand
 import me.katsumag.katbot.commands.moderation.KickCommand
 import me.katsumag.katbot.commands.mojang.MinecraftCommand
@@ -39,5 +41,9 @@ class CommandService @Autowired constructor(
         //moderation
         commandManager.register(KickCommand())
         commandManager.register(BanCommand())
+
+        //colours
+        commandManager.register(RGBCommand())
+        commandManager.register(HexCommand())
     }
 }

@@ -12,6 +12,11 @@
       "name": "bot.token",
       "type": "java.lang.String",
       "description": "The token to run the bot with."
+    },
+    {
+      "name": "bot.prefix",
+      "type": "java.lang.String",
+      "description": "Prefix to run the bot with"
     }
   ]
 }

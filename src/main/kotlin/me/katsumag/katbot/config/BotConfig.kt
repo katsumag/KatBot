@@ -9,4 +9,6 @@ class BotConfig {
 
     lateinit var token: String
 
+    lateinit var prefix: String
+
 }
