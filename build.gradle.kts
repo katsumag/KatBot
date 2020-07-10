@@ -63,6 +63,7 @@ dependencies {
     implementation("com.sedmelluq:lavaplayer:1.3.50")
     implementation("me.duncte123:botCommons:1.0.73")
     implementation("org.menudocs:paste-client-java:1.0.16")
+    implementation("net.dean.jraw:JRAW:1.1.0")
 }
 
 dependencyManagement {

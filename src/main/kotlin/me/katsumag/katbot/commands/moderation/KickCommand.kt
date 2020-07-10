@@ -6,7 +6,6 @@ import net.dv8tion.jda.api.MessageBuilder
 import net.dv8tion.jda.api.Permission
 import net.dv8tion.jda.api.entities.Message
 import java.awt.Color
-import java.util.function.Consumer
 
 class KickCommand : Command(listOf("kick"), false){
 

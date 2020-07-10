@@ -49,7 +49,7 @@ class KatBotApplication @Autowired constructor(
         audioPlayerManager.registerSourceManager(YoutubeAudioSourceManager(true))
         audioPlayerManager.registerSourceManager(SoundCloudAudioSourceManager.builder().withAllowSearch(true).build())
         audioPlayerManager.registerSourceManager(VimeoAudioSourceManager())
-        audioPlayerManager.registerSourceManager(TwitchStreamAudioSourceManager("something"))
+        audioPlayerManager.registerSourceManager(TwitchStreamAudioSourceManager("a"))
 
         audioPlayerManager.setTrackStuckThreshold(5000)
     }

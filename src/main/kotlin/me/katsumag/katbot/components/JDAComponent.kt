@@ -17,9 +17,6 @@ import kotlin.system.exitProcess
  * Handles set up of [JDA] and [CommandManager], used for connecting
  * to the Discord API (and ultimately, the Discord bot), and handling
  * commands.
- *
- * @author Callum Seabrook
- * @since 1.0
  */
 @Component
 class JDAComponent {
@@ -27,7 +24,7 @@ class JDAComponent {
     @Bean
     fun jda(config: BotConfig) = runCatching {
         JDABuilder.create(config.token, GatewayIntent.getIntents(GatewayIntent.ALL_INTENTS))
-                    .setActivity(Activity.playing("katsumag.me"))
+                    .setActivity(Activity.watching("katsumag.me"))
                     .setAudioSendFactory(NativeAudioSendFactory())
                     .disableCache(DISABLED_FLAGS)
                     .build()
