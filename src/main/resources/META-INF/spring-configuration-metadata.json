@@ -4,6 +4,11 @@
       "name": "bot",
       "type": "me.katsumag.katbot.config.BotConfig",
       "sourceType": "me.katsumag.katbot.config.BotConfig"
+    },
+    {
+      "name": "jraw",
+      "type": "me.katsumag.katbot.config.JRAWConfig",
+      "sourceType": "me.katsumag.katbot.config.JRAWConfig"
     }
   ],
 
@@ -17,6 +22,26 @@
       "name": "bot.prefix",
       "type": "java.lang.String",
       "description": "Prefix to run the bot with"
+    },
+    {
+      "name": "jraw.username",
+      "type": "java.lang.String",
+      "description": "Username for JRAW use"
+    },
+    {
+      "name": "jraw.password",
+      "type": "java.lang.String",
+      "description": "Password for JRAW use"
+    },
+    {
+      "name": "jraw.clientId",
+      "type": "java.lang.String",
+      "description": "Client ID for JRAW use"
+    },
+    {
+      "name": "jraw.clientSecret",
+      "type": "java.lang.String",
+      "description": "Client Secret for JRAW use"
     }
   ]
 }

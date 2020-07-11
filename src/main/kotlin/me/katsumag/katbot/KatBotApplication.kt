@@ -6,7 +6,6 @@ import com.sedmelluq.discord.lavaplayer.source.soundcloud.SoundCloudAudioSourceM
 import com.sedmelluq.discord.lavaplayer.source.twitch.TwitchStreamAudioSourceManager
 import com.sedmelluq.discord.lavaplayer.source.vimeo.VimeoAudioSourceManager
 import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioSourceManager
-import net.dv8tion.jda.api.JDA
 import net.dv8tion.jda.api.entities.Member
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -15,9 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.cache.annotation.EnableCaching
-import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory
 import javax.annotation.PostConstruct
-import javax.annotation.PreDestroy
 import kotlin.time.Duration
 import kotlin.time.ExperimentalTime
 
@@ -30,8 +27,7 @@ import kotlin.time.ExperimentalTime
 @SpringBootApplication
 @EnableCaching
 class KatBotApplication @Autowired constructor(
-        private val audioPlayerManager: AudioPlayerManager,
-        private val connectionFactory: LettuceConnectionFactory
+        private val audioPlayerManager: AudioPlayerManager
 ) {
 
     /**
