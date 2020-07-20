@@ -1,6 +1,7 @@
 package me.katsumag.katbot.commands.music
 
 import dev.bombardy.octo.command.Command
+import me.katsumag.katbot.extensions.randomColour
 import me.katsumag.katbot.format
 import me.katsumag.katbot.formatName
 import me.katsumag.katbot.getLogger
@@ -29,7 +30,7 @@ class NowPlayingCommand(private val trackService: TrackService) : Command(listOf
         val percentage = (nowPlaying.position.toDouble() / nowPlaying.duration)
 
         val embed = EmbedBuilder()
-                .setAuthor("What I'm playing now", "https://bot.bardy.me", "https://cdn.prevarinite.com/images/bbg.jpg")
+                .setAuthor("What I'm playing now", "https://bot.katsumag.me", "https://cdn.katsumag.me/KatBot.png")
                 .setThumbnail("https://img.youtube.com/vi/${nowPlaying.identifier}/maxresdefault.jpg")
                 .setDescription("""
                     [${nowPlaying.info.title}](${nowPlaying.info.uri})
@@ -40,7 +41,7 @@ class NowPlayingCommand(private val trackService: TrackService) : Command(listOf
                     
                     *Requested by: ${requester.formatName()}*
                 """.trimIndent())
-                .setColor(16737792)
+                .setColor(randomColour())
                 .build()
 
         channel.sendMessage(embed).queue()

@@ -39,6 +39,7 @@ class RGBCommand : Command(listOf("rgb"), true){
         val graphics2D = image.createGraphics()
         val colour = Color(r, g, b)
         graphics2D.color = colour
+        graphics2D.drawString("your text here", 0, 0)
         graphics2D.fillRect(0, 0, 1024, 128)
         val byteArrayOutputStream = ByteArrayOutputStream()
         byteArrayOutputStream.use {

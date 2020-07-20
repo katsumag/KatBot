@@ -34,6 +34,7 @@ class CommandService @Autowired constructor(
         commandManager.register(NowPlayingCommand(trackService))
         commandManager.register(VolumeCommand(trackService))
         commandManager.register(DeleteCommand(trackService))
+        commandManager.register(ClearQueueCommand(trackService))
 
         //tickets
         commandManager.register(NewTicketCommand())

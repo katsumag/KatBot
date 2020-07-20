@@ -14,21 +14,23 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.cache.annotation.EnableCaching
+import org.springframework.web.bind.annotation.RestController
 import javax.annotation.PostConstruct
 import kotlin.time.Duration
 import kotlin.time.ExperimentalTime
 
+
 /**
  * The main Spring Boot Application class
  *
- * @author Callum Seabrook
- * @since 1.0
  */
 @SpringBootApplication
 @EnableCaching
+@RestController
 class KatBotApplication @Autowired constructor(
         private val audioPlayerManager: AudioPlayerManager
 ) {
+
 
     /**
      * Registers the local and remote sources for the bot to load music
@@ -41,6 +43,7 @@ class KatBotApplication @Autowired constructor(
     @PostConstruct
     fun init() {
         AudioSourceManagers.registerLocalSource(audioPlayerManager)
+        AudioSourceManagers.registerRemoteSources(audioPlayerManager)
 
         audioPlayerManager.registerSourceManager(YoutubeAudioSourceManager(true))
         audioPlayerManager.registerSourceManager(SoundCloudAudioSourceManager.builder().withAllowSearch(true).build())

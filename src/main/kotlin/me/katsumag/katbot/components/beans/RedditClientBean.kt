@@ -1,4 +1,4 @@
-package me.katsumag.katbot.components
+package me.katsumag.katbot.components.beans
 
 import me.katsumag.katbot.config.JRAWConfig
 import net.dean.jraw.RedditClient
