@@ -23,17 +23,17 @@ class DiscordOAuthSecurityConfiguration @Autowired constructor(
     override fun configure(http: HttpSecurity) {
 
         http.oauth2Login()
-                //.redirectionEndpoint()
-                //.baseUri("/panel")
-                //.and()
+                .redirectionEndpoint()
+                .baseUri("/panel")
+                .and()
                 .tokenEndpoint()
                 .accessTokenResponseClient(responseClient)
                 .and()
                 .userInfoEndpoint().userService(userService)
 
-        //http.authorizeRequests()
-          //      .antMatchers("/panel/**").authenticated()
-            //    .anyRequest().permitAll()
+        http.authorizeRequests()
+                .antMatchers("/panel", "/panel/**").authenticated()
+                .anyRequest().permitAll()
 
     }
 
