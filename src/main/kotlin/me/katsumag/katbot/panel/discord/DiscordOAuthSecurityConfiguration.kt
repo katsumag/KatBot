@@ -30,6 +30,8 @@ class DiscordOAuthSecurityConfiguration @Autowired constructor(
                 .accessTokenResponseClient(responseClient)
                 .and()
                 .userInfoEndpoint().userService(userService)
+                .and()
+                .defaultSuccessUrl("/panel", true)
 
         http.authorizeRequests()
                 .antMatchers("/panel", "/panel/**").authenticated()

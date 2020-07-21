@@ -61,13 +61,13 @@
             <div class="column is-6 is-offset-3">
                 <h1 class="title">KatBot Web Console Login</h1>
 
-                <div sec:authorize="isAuthenticated()">
+                <!--<div sec:authorize="isAuthenticated()">
                     <div class="box">
                         Hello,
-                        <!--/*@thymesVar id="#principle" type="me.katsumag.katbot.panel.extractors.DiscordPrincipalExtractor"*/-->
+                        /*@thymesVar id="#principle" type="me.katsumag.katbot.panel.extractors.DiscordPrincipalExtractor"*/
                         <strong th:text="${#principle}">Anonymous User</strong>!
                     </div>
-                </div>
+                </div>-->
 
                 <div sec:authorize="isAnonymous()">
                     <div class="box">
